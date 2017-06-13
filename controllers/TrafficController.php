@@ -71,6 +71,7 @@ class TrafficController extends Controller
             return $this->render('create', [
                 'model' => $model,
             ]);
+
         }
     }
 

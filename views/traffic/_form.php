@@ -37,6 +37,14 @@ use dosamigos\datepicker\DatePicker;
 
     <?= $form->field($model, 'traffic')->textInput() ?>
 
+
+    <br>
+    <br>
+
+        <!-- dosamigos datepicker -->
+    <?= $form->field($model, 'whenSubmitted')->textInput() ?>
+    
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

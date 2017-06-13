@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'week',
             'traffic',
+            'whenSubmitted',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

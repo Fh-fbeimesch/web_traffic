@@ -52,6 +52,8 @@ class Traffic extends \yii\db\ActiveRecord
 
     // Stack overflow solution for submitting current time into database
     //https://stackoverflow.com/questions/27378264/how-to-add-current-timestamp-in-the-database-what-is-the-format
+    
+  /*
     public function behaviors()
 {
     return [
@@ -64,6 +66,7 @@ class Traffic extends \yii\db\ActiveRecord
         ],
     ];   
 }
+*/
 
 
 
