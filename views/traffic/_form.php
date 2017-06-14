@@ -40,10 +40,16 @@ use dosamigos\datepicker\DatePicker;
 
     <br>
     <br>
+    <?php
+        // Set correct Time zone
+        date_default_timezone_set("America/New_York");
+        // Setting the value of whenSubmitted
+        $model->whenSubmitted= date("Y-m-d h:i:s");
 
-        <!-- dosamigos datepicker -->
-    <?= $form->field($model, 'whenSubmitted')->textInput() ?>
-    
+    ?>
+
+    <?= $form->field($model, 'whenSubmitted')->hiddenInput()->label(false) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
