@@ -49,6 +49,25 @@ $this->params['breadcrumbs'][] = $this->title;
 	 					?>]
             }]
         });
+
+            $("button.hideAll").click(function(){
+            	$(myChart.series).each(function(){
+            		this.setVisible(false, false);
+            	})
+            })
+
+        //     function hideAll(){
+        //  	   $(myChart.series).each(function(){
+        //     		this.setVisible(false, false);
+
+        //     	});	
+        // }
+            myChart.redraw();
+
     });
 
     </script>
+    </div>
+    <div class= "traffic-graph">
+		<button class= "hideAll">Hide all</button>
+    </div>
