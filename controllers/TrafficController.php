@@ -122,4 +122,13 @@ class TrafficController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    // Generate graph view
+    public function actionGraph()
+    {
+        $query= Traffic::find()->orderBy('week')->all();
+
+        return $this->render('graph', [
+            'model' => $query,
+            ]);
+    }
 }
