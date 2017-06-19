@@ -9,7 +9,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <script src="http://code.highcharts.com/highcharts.js"></script>
 
 <h1>Graph</h1>
-
 <div id= 'container' class = "traffic-graph" style= "width:100%; height:400px">
     <script>
         $(function () { 
@@ -32,7 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
 	 							echo '\'';
 	 							echo ',';
 	 						}
-	 					?>]
+	 					?>
+	 				]
                 },
                 yAxis: {
                     title: {
@@ -41,33 +41,39 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             series: [{
                 name: 'Traffic',
-                data: [<?php
-							for( $i=0; $i<count($model); $i++){
-								echo Html::encode("{$model[$i]->traffic}");
-	 							echo ',';
-	 						}
-	 					?>]
+                data: [
+                	<?php
+						for( $i=0; $i<count($model); $i++){
+							echo Html::encode("{$model[$i]->traffic}");
+	 						echo ',';
+	 					}
+	 				?>
+	 			],
+	 			color: '#D91728'
             }]
         });
 
-            $("button.hideAll").click(function(){
-            	$(myChart.series).each(function(){
-            		this.setVisible(false, false);
-            	})
-            })
-
-        //     function hideAll(){
-        //  	   $(myChart.series).each(function(){
-        //     		this.setVisible(false, false);
-
-        //     	});	
-        // }
-            myChart.redraw();
-
+        // function for hiding or showing all series
+        $("button.hideAll").click(function(){
+          	var $this = $(this);
+    		$this.toggleClass('hideAll');
+    		if($this.hasClass('hideAll')){
+    			$(myChart.series).each(function(){
+           			this.setVisible(true, true);
+           		})
+       			$this.text('Hide All');         
+   			} else {
+   				$(myChart.series).each(function(){
+           			this.setVisible(false, false);
+           		})
+       			$this.text('Show All');
+   			}
+           	myChart.redraw();
+        })
     });
 
     </script>
     </div>
     <div class= "traffic-graph">
-		<button class= "hideAll">Hide all</button>
+		<button class= "hideAll btn btn-info">Hide All</button>
     </div>
