@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use yii\helpers\ArrayHelper;
+
 /**
  * TrafficController implements the CRUD actions for Traffic model.
  */
@@ -127,8 +129,16 @@ class TrafficController extends Controller
     {
         $query= Traffic::find()->orderBy('week')->all();
 
+        $week= $query[1]->week;
+
+        $weeks= ArrayHelper::getColumn($query, 'week');
+        $traffic= ArrayHelper::getColumn($query, 'traffic');
+
+
         return $this->render('graph', [
             'model' => $query,
+            'week' => $weeks,
+            'traffic' => $traffic
             ]);
     }
 }

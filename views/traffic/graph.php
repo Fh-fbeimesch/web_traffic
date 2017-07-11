@@ -10,6 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <h1>Graph</h1>
 <div id= 'container' class = "traffic-graph" style= "width:100%; height:400px">
+
     <script>
         $(function () { 
             var myChart = Highcharts.chart('container', {
@@ -24,15 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 		text: 'Weeks'
                 	},
                     categories: [
-                    	<?php
-							for( $i=0; $i<count($model); $i++){
-								echo '\'';
-								echo Html::encode("{$model[$i]->week}");
-	 							echo '\'';
-	 							echo ',';
-	 						}
-	 					?>
-	 				]
+                    	<?php foreach($week as $data) { echo '\'' . $data . '\','; } ?>
+	 				          ]
                 },
                 yAxis: {
                     title: {
@@ -42,13 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
             series: [{
                 name: 'Traffic',
                 data: [
-                	<?php
-						for( $i=0; $i<count($model); $i++){
-							echo Html::encode("{$model[$i]->traffic}");
-	 						echo ',';
-	 					}
-	 				?>
-	 			],
+                	<?php foreach($traffic as $data) { echo $data . ','; } ?>
+          ],
 	 			color: '#D91728'
             }]
         });
